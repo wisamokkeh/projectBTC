@@ -149,7 +149,7 @@ function getMoreInfoFunction(id) {
         moreInfoCounter--;
         document.querySelector(`#moreInfo${id}`).innerHTML = html;
     }
-    if (!idExists(id, found)) {
+    if (!checked(id, found)) {
         if (found == -1) {
             moreInfo[moreInfoCounter] = id;
             moreInfoCounter++;
@@ -226,7 +226,7 @@ function closeDialog() {
 }
 
 
-function idExists(idd, found) {
+function checked(idd, found) {
     if (found == -1) {
         var r;
         for (var e = 0; e < moreInfo.length; e++) {
@@ -265,13 +265,98 @@ function idExists(idd, found) {
 
 
 function LiveReports(outlet) {
-    outlet.innerHTML = "<h1>Live Reports Page is working</h1>";
+    
+var options = {
+	exportEnabled: true,
+	animationEnabled: true,
+	title:{
+		text: "ETH,BTC to USD"
+	},
+	subtitles: [{
+		text: "Click Legend to Hide or Unhide Data Series"
+	}],
+	axisX: {
+		title: "States"
+	},
+	axisY: {
+		title: "Coin Value",
+		titleFontColor: "#4F81BC",
+		lineColor: "#4F81BC",
+		labelFontColor: "#4F81BC",
+		tickColor: "#4F81BC",
+		includeZero: false
+	},
+	toolTip: {
+		shared: true
+	},
+	legend: {
+		cursor: "pointer",
+		itemclick: toggleDataSeries
+	},
+	data: [{
+		type: "spline",
+		name: "Units Sold",
+		showInLegend: true,
+		xValueFormatString: "MMM YYYY",
+		yValueFormatString: "#,##0 Units",
+		dataPoints: [
+			{ x: new Date(2016, 0, 1),  y: 120 },
+			{ x: new Date(2016, 1, 1), y: 135 },
+			{ x: new Date(2016, 2, 1), y: 144 },
+			{ x: new Date(2016, 3, 1),  y: 103 },
+			{ x: new Date(2016, 4, 1),  y: 93 },
+			{ x: new Date(2016, 5, 1),  y: 129 },
+			{ x: new Date(2016, 6, 1), y: 143 },
+			{ x: new Date(2016, 7, 1), y: 156 },
+			{ x: new Date(2016, 8, 1),  y: 122 },
+			{ x: new Date(2016, 9, 1),  y: 106 },
+			{ x: new Date(2016, 10, 1),  y: 137 },
+			{ x: new Date(2016, 11, 1), y: 142 }
+		]
+	},
+	{
+		type: "spline",
+		name: "Profit",
+		axisYType: "secondary",
+		showInLegend: true,
+		xValueFormatString: "MMM YYYY",
+		yValueFormatString: "$#,##0.#",
+		dataPoints: [
+			{ x: new Date(2016, 0, 1),  y: 19034.5 },
+			{ x: new Date(2016, 1, 1), y: 20015 },
+			{ x: new Date(2016, 2, 1), y: 27342 },
+			{ x: new Date(2016, 3, 1),  y: 20088 },
+			{ x: new Date(2016, 4, 1),  y: 20234 },
+			{ x: new Date(2016, 5, 1),  y: 29034 },
+			{ x: new Date(2016, 6, 1), y: 30487 },
+			{ x: new Date(2016, 7, 1), y: 32523 },
+			{ x: new Date(2016, 8, 1),  y: 20234 },
+			{ x: new Date(2016, 9, 1),  y: 27234 },
+			{ x: new Date(2016, 10, 1),  y: 33548 },
+			{ x: new Date(2016, 11, 1), y: 32534 }
+		]
+	}]
+};
+
+function toggleDataSeries(e) {
+	if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+		e.dataSeries.visible = false;
+	} else {
+		e.dataSeries.visible = true;
+	}
+	e.chart.render();
+    }
+    
+$("#main").CanvasJSChart(options);
+
+
+   // outlet.innerHTML = "<h1>Live Reports Page is working</h1>";
 }
 function About(outlet) {
-    outlet.innerHTML = "<h1  id='aboutMeName'>Wisam Okkeh</h1><br><img id='myPhoto' src='/profile.jpg' style='height: 10%; width:10% ; '> <div id='aboutMeParagraph'> <p id='pp'>here we show the lastest prices for Coins</p></div>";
+    outlet.innerHTML = "<div id='about'><h1  id='aboutMeName'>Wisam Okkeh</h1><br><img id='photo' src='/profile.jpg' style='height: 10%; width:10% ; '> <div id='aboutText'> <p>here we show the lastest prices for Coins</p></div></div>";
 }
 
-function searchMethodFunction() {
+function searchFun() {
     var f = document.getElementById("searchInput").value;
     var html = " ";
     html += `<div class="row">`;
