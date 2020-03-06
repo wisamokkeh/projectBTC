@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>JohnBryce</title>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section>
+      <div class="parallax">
+        <div class="row" style="text-align: center ;">
+          <div class="col jumbotron container-fluid">
+            <img
+              src="/icon.png"
+              style="height: 50px; width:50px; display: inline-block; "
+            />
+            <h1 class="font-weight-bold" style="display: inline-block;">
+              <a href="index.html" style="color: black;">Cryptonite</a>
+            </h1>
+          </div>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="#" id="home">Home</a>
+              </li>
+              <a class="nav-link" href="#" id="LiveReports">Live Reports</a>
+              <li class="nav-item"></li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" id="about">About</a>
+              </li>
+            </ul>
+            <div class="form-inline my-2 my-lg-0">
+              <input
+                class="form-control mr-sm-2"
+                id="searchInput"
+                type="search"
+                placeholder="Search"
+              />
+              <button
+                class="btn my-2 my-sm-0"
+                type="submit"
+                onclick="searchFun()"
+              >
+                Search
+              </button>
+            </div>
+          </div>
+        </nav>
+
+        <main id="main">
+          <div class="loader"></div>
+        </main>
+      </div>
+    </section>
+    <script src="script.js"></script>
+  </body>
+</html>
